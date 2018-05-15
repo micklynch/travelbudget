@@ -39,4 +39,4 @@ testem.log
 Thumbs.db
 
 # database credentials
-database.ts
+config.ts

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+//import {myDatabase} from '../../database';
 
 @Component({
   selector: 'app-currency-converter',
@@ -10,8 +11,9 @@ export class CurrencyConverterComponent implements OnInit {
   public myvar : any;
   constructor() {
     this.myvar = -100;
-    //let myDB = myDatabase;
-   }
+    //let myDB = new myDatabase();
+    //myDB.mydbsync();
+    }
 
   ngOnInit() {
   }

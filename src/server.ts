@@ -1,5 +1,15 @@
-import {myDatabase} from 'src/database'
+const http = require('http');
+import {Sequelize} from 'sequelize-typescript';
 
-let mydb = new myDatabase();
+const hostname = '127.0.0.1';
+const port = 3000;
 
-mydb.mydbsync();
+const server = http.createServer((req, res) => {
+   res.statusCode = 200;
+   res.setHeader('Content-Type', 'text/plain');
+   res.end('Hello World\n');
+});
+
+server.listen(port, hostname, () => {
+   console.log(`Server running at http://${hostname}:${port}/`);
+});

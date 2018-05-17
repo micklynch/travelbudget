@@ -1,9 +1,7 @@
 import {Sequelize} from 'sequelize-typescript';
 import { dbconfig } from '../config';
 import { Currency } from '../models/currencymodel'
-import { Person } from '../models/person.model';
-
-console.log(dbconfig.dialect);
+//import { Person } from '../models/person.model';
 
 // Check example at https://github.com/CarlosRodrigues/Sequelize-typescript-example
 // and checking https://github.com/suksant/sequelize-typescript-examples
@@ -17,81 +15,37 @@ const sequelize =  new Sequelize({
         port: dbconfig.port
 });
 
-sequelize
-    .authenticate()
-    .then(() => {
-        console.log('Connection has been established successfully.');
-    })
-    .catch(err => {
-        console.error('Unable to connect to the database:', err);
-    });
+sequelize.addModels([Currency]); 
 
-// sequelize.addModels([Currency]);
-sequelize.addModels([__dirname + '../models/person.model.ts'])
+Currency.findAll()
+.then((mylistofCurrencies) => {
+    mylistofCurrencies.forEach((countrycurrency) => {
+        console.log(countrycurrency.city+" has an exchange rate of "+countrycurrency.exchangerate)});
+})
+.catch((err) => {
+    console.log(err);
+})
 
-const person = new Person({name: 'bob', age: 99});
-// person.save();
-
-
-//const mycurrency = new Currency({country: 'Singapore', exchangerate: '10'});
-//console.log(mycurrency.exchangerate);
-
+// Initialization of the models ///
 /*
-const mycurrency = sequelize.define('currency', {
-    country: {
-      type: Sequelize.STRING
-    },
-    exchangerate: {
-      type: Sequelize.REAL
-    }
-  });
-
-mycurrency
+sequelize
     .sync({ force: true })
     .then(() => {        
         console.log('Connection synced')
-        return mycurrency.create({
-            country: 'Ireland',
-            exchangerate: '3'
-        })
+        return; 
     })
     .catch(err => {
         console.log('err');
     });
 */
-
-// sequelize
-// .sync({force: true})
-// .then(()=> {
-//     console.log(__dirname);
-//     console.log('Connection synced')
-// })
-// .catch(err => {
-//     console.log('err');
-// });
-
-sequelize
-        .authenticate()
-        .then(() => {
-          console.log('Connection has been established successfully.');
-        })
-        .catch(err => {
-          console.error('Unable to connect to the database:', err);
-        });
-    
-(async () => {
-            //generate db schema without drop. force: true-> drops existing tables
-            await sequelize.sync({ force: true });
-            console.log("sync complete"); 
-            });
-export class myDatabase {
-    
-    public mydbsync(){
-        
-
-        // (async () => {
-        //     //generate db schema without drop. force: true-> drops existing tables
-        //     await sequelize.sync({ force: true }); 
-        //     });
-    }
-};
+// Adding new currencies to the DB ///
+/*
+const mycurrency = new Currency({country: 'Cambodia', city: 'Kampot', exchangerate: 3700});
+mycurrency.save()
+.then(()=> {
+    console.log("City "+mycurrency.city+" added to DB");
+})
+.catch((err) => {
+    console.log(err);
+})
+*/

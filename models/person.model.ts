@@ -1,17 +1,10 @@
-import {Table, Column, Model, CreatedAt, UpdatedAt} from 'sequelize-typescript';
+  import {Table, Column, Model} from 'sequelize-typescript';
 
-@Table
-export class Person extends Model<Person> {
-
-    constructor(name?: any, age?: any) {
-        super(name, age);
-        console.log(name);
-      }
-
+  @Table
+  export class Person extends Model<Person> {
     @Column
-  name: string;
- 
-  @Column
-  age: number;
- 
-}
+    name: string;
+  
+    @Column
+    age: number;
+  }

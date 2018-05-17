@@ -4,12 +4,11 @@ import {Table, Column, Model, CreatedAt, UpdatedAt} from 'sequelize-typescript';
 @Table
 export class Currency extends Model<Currency> {
 
-  constructor(country?: any, exchangerate?: any) {
-    super(country, exchangerate);
-    console.log(country);
-  }
   @Column
   country: string;
+
+  @Column
+  city: string;
 
   @Column
   exchangerate: number;

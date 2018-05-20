@@ -7,6 +7,12 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "Start Server",
+            "program": "${workspaceFolder}/src/server/server.js"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Launch Program",
             "program": "${workspaceFolder}/serve",
             "preLaunchTask": "tsc: build - tsconfig.json",
@@ -14,5 +20,6 @@
                 "${workspaceFolder}/dist/out-tsc/**/*.js"
             ]
         }
+
     ]
 }

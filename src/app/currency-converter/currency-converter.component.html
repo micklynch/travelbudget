@@ -1,4 +1,5 @@
 <p>
-  currency-converter works!
-  {{myvar}}
+  <li *ngFor="let currency of currencydata">
+      {{$index}} {{currency.city}}, {{currency.country}} : {{currency.exchangerate}}
+  </li>
 </p>

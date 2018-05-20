@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-//import {myDatabase} from '../../database';
+import {Router} from 'express';
+import {bodyparser} from 'body-parser';
+import {currencies} from '../../server/routes/currencies' ;
+import { Currency } from '../../server/models/currencymodel';
+import {ApiService} from '../api.service';
+import {map} from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-currency-converter',
@@ -7,15 +13,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./currency-converter.component.css']
 })
 export class CurrencyConverterComponent implements OnInit {
-
-  public myvar : any;
-  constructor() {
-    this.myvar = -100;
-    //let myDB = new myDatabase();
-    //myDB.mydbsync();
-    }
-
-  ngOnInit() {
+  public currencydata: any;
+  constructor(private apiService: ApiService) {
+     
   }
-
+  ngOnInit() {
+    this.apiService.getCurrencyData().subscribe(
+      data => 
+        this.currencydata = data
+        ,
+      err => console.log(err),
+      () => console.log("completed")
+    );        
+  }
 }

@@ -4,6 +4,7 @@ import {Currency} from '../models/currencymodel';
 
 export const currencies = Router();
 
+// Basic get all route
 currencies.get('/', (req, res, next) => {
     Currency
         .findAll()
@@ -13,6 +14,14 @@ currencies.get('/', (req, res, next) => {
         .catch((err) => {
             console.log(err);
             return err;
-        })
-   
+        })  
 })
+
+// TODO: Need to add routes for all other actions
+// get by api/id
+
+// post
+
+// update api/id
+
+// delete api/id

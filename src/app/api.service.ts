@@ -7,12 +7,12 @@ import {HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class ApiService {
 
-  currenciesURL = 'http://localhost:3000/api/currencies/';
+  baseURL = 'http://localhost:3000/api/';
   
   constructor(private http:HttpClient) {    
    };
 
-  getCurrencyData(): any {
-    return this.http.get(this.currenciesURL, {responseType: 'json'});    
+  getAllData(apiItem: String): any {
+    return this.http.get(this.baseURL+apiItem, {responseType: 'json'});    
   }
 }

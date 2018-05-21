@@ -8,9 +8,6 @@ export class Currency extends Model<Currency> {
   country: string;
 
   @Column
-  city: string;
-
-  @Column
   exchangerate: number;
 
   @CreatedAt

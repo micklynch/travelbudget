@@ -1,6 +1,7 @@
 import * as express  from 'express';
 import {sequelize} from './database';
-import {currencies} from './routes/currencies';
+import {currencies} from './routes/currencyRouter';
+import {people} from './routes/personRouter';
 import { Server } from 'http';
 
 const hostname = 'localhost';
@@ -37,6 +38,7 @@ server.use(function (req, res, next) {
 const mysequelize = sequelize;
 // add currencies route
 server.use('/api/currencies', currencies);
+server.use('/api/people', people);
 
 server.listen(port, hostname, () => {
      // connect to the DB

@@ -2,7 +2,6 @@ import * as express  from 'express';
 import {sequelize} from './database';
 import {currencies} from './routes/currencyRouter';
 import {people} from './routes/personRouter';
-import { Server } from 'http';
 
 const hostname = 'localhost';
 const port = 3000;

@@ -20,8 +20,31 @@ currencies.get('/', (req, res, next) => {
 // TODO: Need to add routes for all other actions
 // get by api/id
 
+currencies.get('/:id', async (req, res, next) => {
+    try {
+      const movie = await Currency.scope(req.query['scope']).findById(req.params['id']);
+      res.json(movie);
+    } catch (e) {
+      next(e);
+    }
+  });
+
 // post
-
+currencies.post('/', async (req, res, next) => {
+    try {
+      const movie = await Currency.create(req.body);
+      res.status(201).json(movie);
+    } catch (e) {
+      next(e);
+    }
+  });
 // update api/id
-
+currencies.put('/:id', async (req, res, next) => {
+    try {
+      await Currency.update<Currency>(req.body, {where: {id: req.params['id']}});
+      res.sendStatus(200);
+    } catch (e) {
+      next(e);
+    }
+  });
 // delete api/id

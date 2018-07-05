@@ -22,8 +22,8 @@ currencies.get('/', (req, res, next) => {
 
 currencies.get('/:id', async (req, res, next) => {
     try {
-      const movie = await Currency.scope(req.query['scope']).findById(req.params['id']);
-      res.json(movie);
+      const currency = await Currency.scope(req.query['scope']).findById(req.params['id']);
+      res.json(currency);
     } catch (e) {
       next(e);
     }
@@ -32,8 +32,8 @@ currencies.get('/:id', async (req, res, next) => {
 // post
 currencies.post('/', async (req, res, next) => {
     try {
-      const movie = await Currency.create(req.body);
-      res.status(201).json(movie);
+      const currency = await Currency.create(req.body);
+      res.status(201).json(currency);
     } catch (e) {
       next(e);
     }

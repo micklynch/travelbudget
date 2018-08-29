@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.1.
 
+Details on how this project was built, and detailed instructions on how to recreate have been published in the following article:
+https://medium.com/@micklynch_6905/angular-6-a-simple-web-application-with-node-and-postgresql-ee2a562887d6
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

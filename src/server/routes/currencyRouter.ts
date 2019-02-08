@@ -17,9 +17,6 @@ currencies.get('/', (req, res, next) => {
         })  
 })
 
-// TODO: Need to add routes for all other actions
-// get by api/id
-
 currencies.get('/:id', async (req, res, next) => {
     try {
       const currency = await Currency.scope(req.query['scope']).findById(req.params['id']);
@@ -32,6 +29,7 @@ currencies.get('/:id', async (req, res, next) => {
 // post
 currencies.post('/', async (req, res, next) => {
     try {
+      console.log(req.body);
       const currency = await Currency.create(req.body);
       res.status(201).json(currency);
     } catch (e) {

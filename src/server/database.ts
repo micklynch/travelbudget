@@ -8,6 +8,7 @@ import { Person } from './models/person.model';
 // with help here https://github.com/RobinBuschmann/st-366 
 
 export const sequelize =  new Sequelize({
+        operatorsAliases: false,
         database: dbconfig.database,
         dialect: dbconfig.dialect,
         username: dbconfig.username,
